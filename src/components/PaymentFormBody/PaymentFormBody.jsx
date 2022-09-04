@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './paymentFormbody.scss'
 import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
 import useForm from "../../hooks/useForm";
+import FormButton from "../FormButton/FormButton";
 
 
 const Month = [
@@ -19,7 +20,7 @@ const getYears = () =>{
 
 
 export default function PaymentFormBody(props) {
-    const { values, isValid, cardType, error, handleChange } = useForm()
+    const { values, cardType, errors, handleChange } = props
     const [month, setMonth] = useState(Month)
     const [year, setYear] = useState(getYears())
     
@@ -32,7 +33,7 @@ export default function PaymentFormBody(props) {
                     <div className={ cardType === 'visa' ? 'isVisa' :'visa'}/>
                 </div>
             </div>
-            <form className='inputField' id='paymentForm'>
+            <div  className='inputField' id='paymentForm'>
                 <div className='inputNameAndNumber'>
                     <TextField
                         variant="outlined"
@@ -45,8 +46,8 @@ export default function PaymentFormBody(props) {
                         onChange={handleChange}
                         fullWidth
                         size="small"
-                        error={values.cardHolder.length>0 && !error.cname}
-                        helperText={values.cardHolder.length>0 && !error.cname && error.cnameMsg}
+                        error={values.cardHolder.length>0 && !errors.cname}
+                        helperText={values.cardHolder.length>0 && !errors.cname && errors.cnameMsg}
                         InputLabelProps={values.cardHolder.length>0 ? { shrink: true } : {shrink: false}}
                     />
                 </div>
@@ -63,8 +64,8 @@ export default function PaymentFormBody(props) {
                         onChange={handleChange}
                         fullWidth
                         size="small"
-                        error={values.cardNumber.length>0 && !error.cnumber}
-                        helperText={values.cardNumber.length>0 && !error.cnumber && error.cnumberMsg}
+                        error={values.cardNumber.length>0 && !errors.cnumber || !errors.ctype}
+                        helperText={values.cardNumber.length>0 && (!errors.cnumber && errors.cnumberMsg) || (!errors.ctype && errors.ctypeMsg)}
                         InputLabelProps={values.cardNumber.length>0 ? { shrink: true } : {shrink: false}}
                     />
                 </div>
@@ -126,8 +127,8 @@ export default function PaymentFormBody(props) {
                             label="CVV"
                             name="cvv"
                             value={values.cvv}
-                            error={values.cvv.length>0 && !error.ccvv}
-                            helperText={values.cvv.length>0 && !error.ccvv && error.ccvvMsg}
+                            error={values.cvv.length>0 && !errors.ccvv}
+                            helperText={values.cvv.length>0 && !errors.ccvv && errors.ccvvMsg}
                             onChange={handleChange}
                             fullWidth
                             size="small"
@@ -136,7 +137,7 @@ export default function PaymentFormBody(props) {
                     </div>
                 </div>
 
-            </form>
+            </div>
         </div>
     );
 }

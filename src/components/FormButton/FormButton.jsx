@@ -5,8 +5,8 @@ import {logDOM} from "@testing-library/react";
 
 
 
-function FormButton(props) {
-    const {error} = useForm()
+function FormButton({errors}) {
+
 
     return (
         <div className='buttonContainer'>
@@ -17,7 +17,7 @@ function FormButton(props) {
                 </button>
             </div>
             <div className='buttonArea'>
-                <button className='normalBtn' disabled={!error.isvalid} type='submit' form='paymentForm'>
+                <button className='normalBtn' disabled={!errors.isvalid} type='submit' form='paymentForm'>
                     Continue
                 </button>
             </div>

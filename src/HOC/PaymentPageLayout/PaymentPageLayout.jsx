@@ -3,6 +3,7 @@ import './paymentPageLayout.scss'
 // import FormContainer from "../../components/FormContainer/FormContainer";
 import PaymentFormBody from "../../components/PaymentFormBody/PaymentFormBody";
 import FormButton from "../../components/FormButton/FormButton";
+import FormContainer from "../../components/FormContainer/FormContainer";
 
 function PaymentPageLayout() {
     return (
@@ -10,12 +11,10 @@ function PaymentPageLayout() {
             <div className='paymentPageHeader'>
                 <div className='paymentPageHeaderLogo'/>
             </div>
-            <div className='pageContent'>
+            <form className='formContent'>
                 <div className='formTitle'>Payment</div>
-                {/*<FormContainer/>*/}
-                <PaymentFormBody/>
-                <FormButton/>
-            </div>
+                <FormContainer/>
+            </form>
 
         </div>
     );

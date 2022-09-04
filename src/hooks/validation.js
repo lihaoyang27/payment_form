@@ -7,22 +7,38 @@ export default function validation(values){
     creditCard.expirationDate = valid.expirationDate(values.cardExpirationMonth + values.cardExpirationYear);
     creditCard.cvv = valid.cvv(values.cvv);
     creditCard.cardholderName = valid.cardholderName(values.cardHolder);
+    // creditCard.card.type = valid.number(values.cardNumber).card.type
 
 
     errors.show = true;
     errors.cname = false;
     errors.cnameMsg = "";
     errors.cnumber = false;
-    errors.cnumberMsg = ""
-    // errors.ctype = false;
+    errors.cnumberMsg = "";
+    errors.ctype = false;
+    errors.ctypeMsg = "";
     errors.cexp = false;
     errors.cexpMsg = "";
     errors.ccvv = false;
     errors.ccvvMsg = "";
-    errors.isvalid = false
+    errors.isvalid = false;
 
 
 
+    // Card Type Verification
+    // if(creditCard.card.type !== "visa" || creditCard.card.type !== "mastercard"){
+    //     errors.cnumberMsg = "We only accept Visa or Mastercard"
+    // }else{
+    //     errors.ctype = true
+    // }
+    if(creditCard.card){
+        if(creditCard.card.type !== "visa" && creditCard.card.type !== "mastercard"){
+            errors.ctypeMsg = "We only accept Visa or Mastercard"
+        }else{
+            errors.ctype = true
+            errors.ctypeMsg = ""
+        }
+    }
 
     //Card CVV expiration
     if (values.cvv === null || !values.cvv.trim()) {
@@ -46,7 +62,7 @@ export default function validation(values){
     //Card Number Verification
     if (values.cardNumber === null || !values.cardNumber.trim()) {
         errors.cnumberMsg = "Credit card number is not complete";
-    }else if (creditCard.isValid) {
+    }else if (creditCard.isValid ) {
         errors.cnumber = true;
     } else {
         errors.cnumberMsg = "Credit card number is invalid";
@@ -64,11 +80,10 @@ export default function validation(values){
 
 
     if (
-        // errors.ctype &&
+        errors.ctype &&
         errors.cname &&
         errors.cnumber &&
         errors.cexp &&
-        // errors.cpostal &&
         errors.ccvv
     ) {
 
