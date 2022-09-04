@@ -4,11 +4,11 @@ import FormButton from "../FormButton/FormButton";
 import useForm from "../../hooks/useForm";
 
 function FormContainer(props) {
-    const { values, cardType, errors, handleChange } = useForm()
+    const { values, cardType, errors, handleChange, handleSubmit } = useForm()
     return (
         <>
             <PaymentFormBody values={values} errors={errors} handleChange={handleChange} cardType={cardType}/>
-            <FormButton errors={errors}/>
+            <FormButton errors={errors} handleSubmit={handleSubmit}/>
         </>
     );
 }

@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import './paymentFormbody.scss'
 import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/material";
-import useForm from "../../hooks/useForm";
-import FormButton from "../FormButton/FormButton";
+
 
 
 const Month = [
@@ -23,7 +22,10 @@ export default function PaymentFormBody(props) {
     const { values, cardType, errors, handleChange } = props
     const [month, setMonth] = useState(Month)
     const [year, setYear] = useState(getYears())
-    
+
+
+    /*Card number verification will first detect whether the card type is visa or mastercard,
+     and then check the validity of the card number*/
     return (
         <div className='formBodyContainer'>
             <div className='cardTypeField'>
@@ -46,14 +48,13 @@ export default function PaymentFormBody(props) {
                         onChange={handleChange}
                         fullWidth
                         size="small"
-                        error={values.cardHolder.length>0 && !errors.cname}
+                        error={values.cardHolder.length>0 && (!errors.cname || errors.cnameMsg.length>0)}
                         helperText={values.cardHolder.length>0 && !errors.cname && errors.cnameMsg}
                         InputLabelProps={values.cardHolder.length>0 ? { shrink: true } : {shrink: false}}
                     />
                 </div>
                 <div className='inputNameAndNumber'>
                     <TextField
-
                         variant="outlined"
                         required
                         type="text"
@@ -64,8 +65,8 @@ export default function PaymentFormBody(props) {
                         onChange={handleChange}
                         fullWidth
                         size="small"
-                        error={values.cardNumber.length>0 && !errors.cnumber || !errors.ctype}
-                        helperText={values.cardNumber.length>0 && (!errors.cnumber && errors.cnumberMsg) || (!errors.ctype && errors.ctypeMsg)}
+                        error={values.cardNumber.length>0 && (!errors.cnumber || !errors.ctype)}
+                        helperText={values.cardNumber.length>0 && ((!errors.ctype && errors.ctypeMsg) || (!errors.cnumber && errors.cnumberMsg)) }
                         InputLabelProps={values.cardNumber.length>0 ? { shrink: true } : {shrink: false}}
                     />
                 </div>

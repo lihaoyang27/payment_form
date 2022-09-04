@@ -7,10 +7,9 @@ export default function validation(values){
     creditCard.expirationDate = valid.expirationDate(values.cardExpirationMonth + values.cardExpirationYear);
     creditCard.cvv = valid.cvv(values.cvv);
     creditCard.cardholderName = valid.cardholderName(values.cardHolder);
-    // creditCard.card.type = valid.number(values.cardNumber).card.type
 
 
-    errors.show = true;
+
     errors.cname = false;
     errors.cnameMsg = "";
     errors.cnumber = false;
@@ -26,11 +25,6 @@ export default function validation(values){
 
 
     // Card Type Verification
-    // if(creditCard.card.type !== "visa" || creditCard.card.type !== "mastercard"){
-    //     errors.cnumberMsg = "We only accept Visa or Mastercard"
-    // }else{
-    //     errors.ctype = true
-    // }
     if(creditCard.card){
         if(creditCard.card.type !== "visa" && creditCard.card.type !== "mastercard"){
             errors.ctypeMsg = "We only accept Visa or Mastercard"
@@ -71,7 +65,6 @@ export default function validation(values){
     //Cardholder Name Verification
     if (values.cardHolder === null || !values.cardHolder.trim()) {
         errors.cnameMsg = "Cardholder name is not complete";
-        errors.cname = true
     } else if (creditCard.cardholderName.isValid) {
         errors.cname = true;
     } else {

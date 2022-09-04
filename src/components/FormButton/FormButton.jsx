@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
-import useForm from "../../hooks/useForm";
 import './formButton.scss'
-import {logDOM} from "@testing-library/react";
 
 
 
-function FormButton({errors}) {
+
+function FormButton({errors, handleSubmit}) {
 
 
     return (
@@ -17,7 +16,7 @@ function FormButton({errors}) {
                 </button>
             </div>
             <div className='buttonArea'>
-                <button className='normalBtn' disabled={!errors.isvalid} type='submit' form='paymentForm'>
+                <button className='normalBtn' disabled={!errors.isvalid} type='submit' form='paymentForm' onClick={handleSubmit}>
                     Continue
                 </button>
             </div>

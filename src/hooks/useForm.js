@@ -21,6 +21,16 @@ const useForm = () => {
         setValues({...values, [name]:value})
     }
 
+    const handleSubmit = () => {
+        window.alert(`
+        Name: ${values.cardHolder},
+        Number: ${values.cardNumber},
+        Month: ${values.cardExpirationMonth},
+        Year: ${values.cardExpirationYear},
+        CVV: ${values.cvv}
+        `)
+    }
+
     //Set card type
     useEffect(()=>{
         console.log(values)
@@ -35,18 +45,10 @@ const useForm = () => {
 
     },[values])
 
-useEffect(()=>{
-    console.log(errors)
-    // setIsValid(errors.ccvv && errors.cexp && errors.cname && errors.cnumber)
-    // if(errors.ccvv && errors.cexp && errors.cname && errors.cnumber){
-    //     setIsValid(true)
-    // }else{
-    //     setIsValid(false)
-    // }
-},[errors]);
 
 
-    return { values, cardType, errors, handleChange };
+
+    return { values, cardType, errors, handleChange, handleSubmit };
 }
 
 
