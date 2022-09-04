@@ -1,0 +1,79 @@
+import valid from 'card-validator'
+
+export default function validation(values){
+    let errors = {};
+    let creditCard = valid.number(values.cardNumber);
+
+    creditCard.expirationDate = valid.expirationDate(values.cardExpirationMonth + values.cardExpirationYear);
+    creditCard.cvv = valid.cvv(values.cvv);
+    creditCard.cardholderName = valid.cardholderName(values.cardHolder);
+
+
+    errors.show = true;
+    errors.cname = false;
+    errors.cnameMsg = "";
+    errors.cnumber = false;
+    errors.cnumberMsg = ""
+    // errors.ctype = false;
+    errors.cexp = false;
+    errors.cexpMsg = "";
+    errors.ccvv = false;
+    errors.ccvvMsg = "";
+    errors.isvalid = false
+
+
+
+
+    //Card CVV expiration
+    if (values.cvv === null || !values.cvv.trim()) {
+        errors.ccvvMsg = "Credit card CVC is not complete";
+    } else if (creditCard.cvv.isValid) {
+        errors.ccvv = true;
+    } else {
+        errors.ccvvMsg = "CVV is invalid";
+    }
+
+    //Card Expiration Verification
+    if (values.cardExpirationMonth === null || !values.cardExpirationMonth.trim() || values.cardExpirationYear === null || !values.cardExpirationYear.trim()) {
+        errors.cexpMsg = "Credit card expiration date is not complete";
+    } else if (creditCard.expirationDate.isValid) {
+        errors.cexp = true;
+    } else {
+        errors.cexpMsg = "Credit card expiration date is invalid";
+    }
+
+
+    //Card Number Verification
+    if (values.cardNumber === null || !values.cardNumber.trim()) {
+        errors.cnumberMsg = "Credit card number is not complete";
+    }else if (creditCard.isValid) {
+        errors.cnumber = true;
+    } else {
+        errors.cnumberMsg = "Credit card number is invalid";
+    }
+
+    //Cardholder Name Verification
+    if (values.cardHolder === null || !values.cardHolder.trim()) {
+        errors.cnameMsg = "Cardholder name is not complete";
+        errors.cname = true
+    } else if (creditCard.cardholderName.isValid) {
+        errors.cname = true;
+    } else {
+        errors.cnameMsg = "Cardholder name is invalid";
+    }
+
+
+    if (
+        // errors.ctype &&
+        errors.cname &&
+        errors.cnumber &&
+        errors.cexp &&
+        // errors.cpostal &&
+        errors.ccvv
+    ) {
+
+        errors.isvalid = true
+    }
+
+    return errors;
+}

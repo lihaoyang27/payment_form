@@ -1,0 +1,62 @@
+@import "src/_globalStyle/var_";
+
+
+.paymentPage{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.paymentPageHeader{
+  background-color: $ideaThemeColor;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+}
+.formTitle{
+  width: 100%;
+  color: $ideaThemeColor;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 1rem;
+}
+
+//desktop
+@media screen and (min-width: $breakPoint){
+  .paymentPageHeader{
+    height: 56px;
+  }
+  .paymentPageHeaderLogo{
+    width: 294px;
+    height: 32px;
+    margin-left: 166px;
+    background:url("../../assets/logo_full_size.png");
+  }
+  .pageContent{
+    width: 502px;
+  }
+}
+
+//mobile
+@media screen and (max-width: $breakPoint){
+
+  .paymentPageHeader{
+    height: 50px;
+  }
+  .paymentPageHeaderLogo{
+    width: 37px;
+    height: 37px;
+    margin-left:25px;
+    background:url("../../assets/logo.png");
+  }
+  .pageContent{
+    width: 328px;
+    margin-bottom: 100px;
+  }
+}

@@ -1,0 +1,135 @@
+@import "src/_globalStyle/var_";
+
+.formBodyContainer{
+  width: 100%;
+  height:384px;
+  border-radius: .5rem;
+  box-shadow: $containerShadow;
+  background-color: $formLightGrey;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+}
+
+//Card type field
+.cardTypeField{
+  margin-bottom: 1rem;
+  padding: 38px 38px 0;
+}
+.cardTypeReminder{
+  margin-bottom: .5rem;
+}
+
+.cardTypeDisplay{
+  display: flex;
+}
+.master{
+  width: 54px;
+  height: 38px;
+  background: url("../../assets/mastercard-logo.png") no-repeat white center center;
+  background-size: auto;
+  border-radius: 6px;
+  border: .1rem solid $borderGrey;
+}
+.visa{
+  width: 54px;
+  height: 38px;
+  background: url("../../assets/visa-logo.png") no-repeat white center center;
+  background-size: auto;
+  border-radius: 6px;
+  border: .1rem solid $borderGrey;
+  margin-left: .5rem;
+}
+.isMaster{
+  width: 62px;
+  height: 44px;
+  background: url("../../assets/mastercard-logo.png") no-repeat white center center;
+  background-size: auto;
+  border-radius: 6px;
+  box-shadow: $itemShadow;
+}
+.isVisa{
+  width: 62px;
+  height: 44px;
+  background: url("../../assets/visa-logo.png") no-repeat white center center;
+  background-size: auto;
+  border-radius: 6px;
+  box-shadow: $itemShadow;
+}
+
+//Input Field
+.inputField{
+  background-color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+.inputNameAndNumber{
+  width: 100%;
+  padding: .5rem 0;
+  box-sizing: border-box;
+
+}
+.dateAndCvv{
+margin-top: .5rem;
+}
+
+
+
+//Desktop
+@media screen and (min-width: $breakPoint){
+  .inputField{
+    padding: 32px 38px;
+  }
+  .dateAndCvv{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .date{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .month{
+    flex-basis: 40%;
+    min-width: 100px;
+  }
+  .year{
+    flex-basis: 40%;
+    min-width: 100px;
+  }
+  .cvv{
+    width: 140px;
+  }
+}
+//Mobile
+@media screen and (max-width: $breakPoint){
+  .inputField{
+    padding: 1rem 1rem;
+  }
+  .dateAndCvv{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .date{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .year{
+    width: 140px
+  }
+  .month{
+    width: 140px
+  }
+  .cvv{
+    margin-top: 1rem;
+    width: 100%;
+  }
+}
