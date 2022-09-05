@@ -2,20 +2,22 @@
 
 .formBodyContainer{
   width: 100%;
-  //height:384px;
+  min-height:384px;
   border-radius: .5rem;
   box-shadow: $containerShadow;
   background-color: $formLightGrey;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-
+  transition: .5s all ease;
 }
 
 //Card type field
 .cardTypeField{
   margin-bottom: 1rem;
   padding: 38px 38px 0;
+  height: 108px;
+  box-sizing: border-box;
 }
 .cardTypeReminder{
   margin-bottom: .5rem;
@@ -31,6 +33,7 @@
   background-size: auto;
   border-radius: 6px;
   border: .1rem solid $borderGrey;
+  transition: .3s all ease;
 }
 .visa{
   width: 54px;
@@ -40,6 +43,7 @@
   border-radius: 6px;
   border: .1rem solid $borderGrey;
   margin-left: .5rem;
+  transition: .3s all ease;
 }
 .isMaster{
   width: 62px;
@@ -48,6 +52,7 @@
   background-size: auto;
   border-radius: 6px;
   box-shadow: $itemShadow;
+  transition: .3s all ease;
 }
 .isVisa{
   width: 62px;
@@ -56,6 +61,8 @@
   background-size: auto;
   border-radius: 6px;
   box-shadow: $itemShadow;
+  margin-left: .5rem;
+  transition: .3s all ease;
 }
 
 //Input Field
@@ -66,13 +73,13 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  transition: .5s all ease;
 
 }
 .inputNameAndNumber{
   width: 100%;
   padding: .5rem 0;
   box-sizing: border-box;
-
 }
 .dateAndCvv{
 margin-top: .5rem;
@@ -85,10 +92,15 @@ margin-top: .5rem;
   .inputField{
     padding: 32px 38px;
   }
+  .inputNameAndNumber{
+    height: 66px;
+
+  }
   .dateAndCvv{
     display: flex;
     justify-content: space-between;
     width: 100%;
+
   }
   .date{
     width: 50%;
@@ -105,12 +117,17 @@ margin-top: .5rem;
   }
   .cvv{
     width: 140px;
+    height: 60px;
   }
 }
 //Mobile
 @media screen and (max-width: $breakPoint){
   .inputField{
     padding: 1rem 1rem;
+  }
+  .inputNameAndNumber{
+    height: 70px;
+
   }
   .dateAndCvv{
     display: flex;
@@ -131,5 +148,6 @@ margin-top: .5rem;
   .cvv{
     margin-top: 1rem;
     width: 100%;
+    height: 60px;
   }
 }

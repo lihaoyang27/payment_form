@@ -26,6 +26,8 @@ export default function PaymentFormBody(props) {
 
     /*Card number verification will first detect whether the card type is visa or mastercard,
      and then check the validity of the card number*/
+
+
     return (
         <div className='formBodyContainer'>
             <div className='cardTypeField'>
@@ -66,7 +68,7 @@ export default function PaymentFormBody(props) {
                         fullWidth
                         size="small"
                         error={values.cardNumber.length>0 && (!errors.cnumber || !errors.ctype)}
-                        helperText={values.cardNumber.length>0 && ((!errors.ctype && errors.ctypeMsg) || (!errors.cnumber && errors.cnumberMsg)) }
+                        helperText={values.cardNumber.length>0 && ((!errors.ctype && errors.ctypeMsg) || (!errors.cnumber && errors.cnumberMsg))}
                         InputLabelProps={values.cardNumber.length>0 ? { shrink: true } : {shrink: false}}
                     />
                 </div>

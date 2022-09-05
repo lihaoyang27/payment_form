@@ -13,7 +13,6 @@ const useForm = () => {
         cvv:""
     })
     const [errors, setError] = useState({})
-    // const [isValid, setIsValid] = useState(false)
     const [cardType, setCardType] = useState("")
 
     const handleChange = (e) => {
@@ -33,13 +32,11 @@ const useForm = () => {
 
     //Set card type
     useEffect(()=>{
-        console.log(values)
-        console.log(valid.number(values.cardNumber))
         if(valid.number(values.cardNumber).card){
            setCardType(valid.number(values.cardNumber).card.type)
-            console.log(valid.number(values.cardNumber).card)
+        }else{
+            setCardType("")
         }
-        // if(values.cardHolder && values.cardNumber && values.cardExpirationMonth && values.cardExpirationYear && values.cvv){
             setError(validation(values))
 
 
