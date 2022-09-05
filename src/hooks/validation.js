@@ -64,11 +64,13 @@ export default function validation(values){
 
     //Cardholder Name Verification
     if (values.cardHolder === null || !values.cardHolder.trim()) {
-        errors.cnameMsg = "Cardholder name is not complete";
+        errors.cnameMsg = "Card holder's name is not complete";
+    }else if(values.cardHolder.indexOf(' ') === 0 || values.cardHolder.indexOf(' ') === values.cardHolder.length - 1){
+            errors.cnameMsg = "Card holder's name should not contain space before or after"
     } else if (creditCard.cardholderName.isValid) {
         errors.cname = true;
     } else {
-        errors.cnameMsg = "Cardholder name is invalid";
+        errors.cnameMsg = "Card holder's name is invalid";
     }
 
 
