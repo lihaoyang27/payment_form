@@ -1,6 +1,6 @@
 
 import './App.css';
-import PaymentPageLayout from "./HOC/PaymentPageLayout/PaymentPageLayout";
+import PaymentPageLayout from "./components/PaymentPageLayout/PaymentPageLayout";
 
 function App() {
   return (

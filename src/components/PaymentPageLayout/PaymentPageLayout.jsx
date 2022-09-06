@@ -1,7 +1,7 @@
 import React from 'react';
 import './paymentPageLayout.scss'
 
-import FormContainer from "../../components/FormContainer/FormContainer";
+import FormContainer from "../FormContainer/FormContainer";
 
 function PaymentPageLayout() {
     return (
