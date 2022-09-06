@@ -1,0 +1,27 @@
+@import "../../_globalStyle/var_";
+
+.formTitle{
+  width: 100%;
+  color: $ideaThemeColor;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 1rem;
+}
+
+//desktop
+@media screen and (min-width: $breakPoint){
+
+  .formContent{
+    width: 502px;
+  }
+}
+
+//mobile
+@media screen and (max-width: $breakPoint){
+
+  .formContent{
+    width: 328px;
+    margin-bottom: 80px;
+  }
+}

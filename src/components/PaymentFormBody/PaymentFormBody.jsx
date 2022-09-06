@@ -12,16 +12,16 @@ const getYears = () =>{
     let yearArr = [];
     let currentYear = new Date().getFullYear();
     for (let i = 0; i < 6; i++){
-        yearArr.push((currentYear + i).toString())
+        yearArr.push((currentYear + i).toString());
     }
     return yearArr
 }
 
 
 export default function PaymentFormBody(props) {
-    const { values, cardType, errors, handleChange } = props
-    const [month, setMonth] = useState(Month)
-    const [year, setYear] = useState(getYears())
+    const { values, cardType, errors, handleChange } = props;
+    const [month, setMonth] = useState(Month);
+    const [year, setYear] = useState(getYears());
 
 
     /*Card number verification will first detect whether the card type is visa or mastercard,

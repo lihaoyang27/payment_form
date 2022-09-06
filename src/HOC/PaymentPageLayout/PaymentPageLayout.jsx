@@ -1,19 +1,14 @@
 import React from 'react';
 import './paymentPageLayout.scss'
 
-import FormContainer from "../FormContainer/FormContainer";
 
-function PaymentPageLayout() {
+function PaymentPageLayout({children}) {
     return (
         <div className='paymentPage'>
             <div className='paymentPageHeader'>
                 <div className='paymentPageHeaderLogo'/>
             </div>
-            <form className='formContent'>
-                <div className='formTitle'>Payment</div>
-                <FormContainer/>
-            </form>
-
+            {children}
         </div>
     );
 }

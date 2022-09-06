@@ -1,11 +1,14 @@
 
 import './App.css';
-import PaymentPageLayout from "./components/PaymentPageLayout/PaymentPageLayout";
+import PaymentPageLayout from "./HOC/PaymentPageLayout/PaymentPageLayout";
+import FormContainer from "./components/FormContainer/FormContainer";
 
 function App() {
   return (
     <div className="App">
-      <PaymentPageLayout/>
+        <PaymentPageLayout>
+            <FormContainer/>
+        </PaymentPageLayout>
     </div>
   );
 }
