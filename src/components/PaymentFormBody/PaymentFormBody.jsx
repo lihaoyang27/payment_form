@@ -4,9 +4,20 @@ import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/materia
 
 
 
-const Month = [
-    '01','02','03','04','05','06','07','08','09','10','11','12'
-]
+const Month = {
+    'Jan':'01',
+    'Feb':'02',
+    'Mar':'03',
+    'Apr':'04',
+    'May':'05',
+    'Jun':'06',
+    'Jul':'07',
+    'Aug':'08',
+    'Sept':'09',
+    'Oct':'10',
+    'Nov':'11',
+    'Dec':'12'
+}
 
 const getYears = () =>{
     let yearArr = [];
@@ -89,9 +100,9 @@ export default function PaymentFormBody(props) {
                                 defaultValue=""
 
                             >
-                                { month.map((month)=>{
+                                { Object.keys(month).map((monthKey)=>{
                                     return(
-                                        <MenuItem value={month} key={month}>{month}</MenuItem>
+                                        <MenuItem value={month[monthKey]} key={monthKey}>{monthKey}</MenuItem>
                                     )
                                 })}
                             </Select>
