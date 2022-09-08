@@ -16,7 +16,7 @@
 
 - Card number: Mastercard/ Visa format validation
 
-- Month: Not empty
+- Month: Not empty，Jan-Dec
 
 - Year: Not empty
 
